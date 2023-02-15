@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.ts",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon"
@@ -20,9 +19,13 @@
   },
   "homepage": "https://github.com/shaoor1994/PIAIC#readme",
   "devDependencies": {
+    "@types/inquirer": "^9.0.3",
     "@types/node": "^18.13.0"
   },
   "dependencies": {
-    "nodemon": "^2.0.20"
+    "chalk": "^5.2.0",
+    "inquirer": "^9.1.4",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1"
   }
 }
