@@ -1,166 +1,60 @@
-// // // import a from "./src/first.js";
-// // // import {b, c as d} from "./src/second.js";
+// Any
 
-// // // console.log(a + b + d);
+let myval: any;
 
-// // // import inquirer from "inquirer";
-// // // import chalk from "chalk";
-
-// // // let answers = inquirer.prompt([{
-// // //     name: "age",
-// // //     type: "number",
-// // //     message: "Enter your Age:"}
-// // // ]);
-
-// // // console.log("Insha Allah, in " + (60 - answers.name) + " years you will be 60 years old.");
-
-// // let myname: string | null;
-
-// // myname = null;
-// // console.log(myname);
-
-// // myname = "saad";
-// // console.log(myname);
-
-// // //myname = undefined; //Error
-// // //myname = 12; //Error
-
-// // let myAge: string | number;
-
-// // myAge = 16;//narrowing
-// // console.log(myAge);
-
-// // //console.log(myAge.toLowerCase());//Error
-
-// // myAge = "Dont Know";//narrowing
-// // console.log(myAge);
-
-// // console.log(myAge.toString()); // common to both types 
-// //                                //can be called even without narrowing
-
-// // console.log(myAge.toLowerCase());//Can be called on string 
-// //                                 //because of narrowing
-
-// // let newAge = Math.random() > 0.6 ? "Khan": 60;
-
-// // //newAge.toLowerCase();//Error: Transpiler cannot narrow
-
-// // if (newAge === "Khan") {
-// //     // Type of newAge: string
-// //     newAge.toUpperCase(); // Can be called
-// // }
-
-// // if(typeof newAge === "string"){
-// //     // Type of newAge: string
-// //     newAge.toUpperCase(); // Can be called
-// // }
-
-// // typeof newAge === "string"
-// // ? newAge.toUpperCase() // Ok: string
-// // : newAge.toFixed(); // Ok: number
+myval = true; // OK
+myval = 42; // OK
+myval = "hey!"; // OK
+myval = []; // OK
+myval = {}; // OK
+myval = Math.random; // OK
+myval = null; // OK
+myval = undefined; // OK
+myval = () => { console.log('Hey again!'); }; // OK
 
 
-// // let age: number | "died" | "unknown";
+//Unknown
 
-// // age = 90;//OK
-// // age = "died";//OK
-// // age = "unknown";//OK
-// // //age = "living";//Error
+let value: unknown;
 
-
-// // let saad: "saad";
-
-// // saad = "saad";
-// // //saad = "khan";//Error
-
-
-// // let yourName = Math.random() > 0.6 ? "Saad Shaoor Ghazanfar": undefined;
-
-// // if (yourName) {
-// //     yourName.toUpperCase(); // Ok: string
-// // }
-
-// // //yourName.toUpperCase();//Error: Object is possibly 'undefined'.
-
-// // yourName?.toUpperCase();//OK
-
-// // // You can also define a type alias
-// // type RawData = boolean | number | string | null | undefined;
-
-// // let data: RawData;
-
-// // // You can even combine them
-
-// // type Id = number | string;
-
-// // type IdMaybe = Id | undefined | null;
-
-// let teacher : {name: string, exp: number} = {
-//     name: "fahad",
-//     exp: 10
-// }
-
-// // Aliased Object Type
-// type Student = {
-//     name: string,
-//     age?: number
-// }
-
-// let student: Student = {
-//     name: "saad",
-//     age: 30
-// }
-
-// console.log(student["name"]);
-// console.log(student.age);
-
-// // Interfaces
-
-// interface Manager {
-//     name: string,
-//     subordiates?: number
-// }
-
-// let storeManager: Manager = {
-//     name: "hammad"
-// }
+value = true; // OK
+value = 42; // OK
+value = "hey!"; // OK
+value = []; // OK
+value = {}; // OK
+value = Math.random; // OK
+value = null; // OK
+value = undefined; // OK
+value = () => { console.log('Hey again!'); }; // OK
 
 
-// type Author = {
-//     firstName: string;
-//     lastName: string;
-// };
+// Assigning a value of type unknown to variables of other types
 
-// type Book = {
-//     author: Author;
-//     name: string;
-// };
+let val: unknown;
 
-// const myBook : Book = {
-//     author: {
-//         firstName: "Saad",
-//         lastName: "Shaoor"
-//     },
-//     name: "My Best Book"
-// }
-interface Student {
-    student_id: number;
-    name: string;
-  }
-    
-interface Teacher {
-    teacher_Id: number;
-    teacher_name: string;
+const val1: unknown = val; // OK
+const val2: any = val; // OK
+// const val3: boolean = val; // Will throw error
+// const val4: number = val; // Will throw error
+// const val5: string = val; // Will throw error
+// const val6: Record<string, any> = val; // Will throw error
+// const val7: any[] = val; // Will throw error
+// const val8: (...args: any[]) => void = val; // Will throw error
+
+
+// Never
+
+// Function returning never must not have a reachable end point
+function error(message: string): never {
+  throw new Error(message);
 }
-    
-type intersected_type = Student & Teacher;
-    
-let obj1: intersected_type = {
-    student_id: 3232,
-    name: "rita",
-    teacher_Id: 7873,
-    teacher_name: "seema",
-};
-    
-console.log(obj1.teacher_Id);
-console.log(obj1.name);
+ 
+// Inferred return type is never
+function fail() {
+  return error("Something failed");
+}
+ 
+// Function returning never must not have a reachable end point
+function infiniteLoop(): never {
+  while (true) {}
+}
