@@ -21,3 +21,32 @@
 
 // let array5: number[] = [];
 // array5.push(1234);
+
+//functions
+
+function add(x: number, y: number): number {
+  return x+y;
+}
+
+
+let myAdd1 = function(x: number, y: number): number { 
+      return x+y; 
+};
+
+
+let myAdd2: (x:number, y:number)=>number = 	function(x: number, y: number): number { 
+                      return x+y; 
+                    };
+
+
+let myAdd3: (baseValue:number, increment:number)=>number = 	function(x: number, y: number): number { 
+                              return x+y; 
+                            };
+														
+let myAdd4 = (a : number, b : number) => a + b;
+
+
+type GreetFunction = (a: string) => void;
+function greeter(fn: GreetFunction) {
+//....
+}
