@@ -24,29 +24,50 @@
 
 //functions
 
-function add(x: number, y: number): number {
-  return x+y;
+// function add(x: number, y: number): number {
+//   return x+y;
+// }
+
+
+// let myAdd1 = function(x: number, y: number): number { 
+//       return x+y; 
+// };
+
+
+// let myAdd2: (x:number, y:number)=>number = 	function(x: number, y: number): number { 
+//                       return x+y; 
+//                     };
+
+
+// let myAdd3: (baseValue:number, increment:number)=>number = 	function(x: number, y: number): number { 
+//                               return x+y; 
+//                             };
+														
+// let myAdd4 = (a : number, b : number) => a + b;
+
+
+// type GreetFunction = (a: string) => void;
+// function greeter(fn: GreetFunction) {
+// //....
+// }
+function buildName(firstName: string, lastName?: string) : string {
+  if (lastName)
+      return firstName + " " + lastName;
+  else
+      return firstName;
 }
 
-
-let myAdd1 = function(x: number, y: number): number { 
-      return x+y; 
-};
-
-
-let myAdd2: (x:number, y:number)=>number = 	function(x: number, y: number): number { 
-                      return x+y; 
-                    };
+let result1 = buildName("Bob");  
+let result2 = buildName("Bob", "Adams", "Sr."); 
+var result3 = buildName("Bob", "Adams");  
 
 
-let myAdd3: (baseValue:number, increment:number)=>number = 	function(x: number, y: number): number { 
-                              return x+y; 
-                            };
-														
-let myAdd4 = (a : number, b : number) => a + b;
 
-
-type GreetFunction = (a: string) => void;
-function greeter(fn: GreetFunction) {
-//....
+//anonymous function type with optional parameters
+var buildName1 : (firstName: string, lastName?: string) => string = 
+function(firstName: string, lastName?: string) : string {
+  if (lastName)
+      return firstName + " " + lastName;
+  else
+      return firstName;
 }
