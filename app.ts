@@ -110,13 +110,27 @@
 // 	return firstName + " " + restOfName.join(" ");
 // }
 
-function myCallBack(text: string) {
-  console.log("inside myCallback " + text);
+// function myCallBack(text: string) {
+//   console.log("inside myCallback " + text);
+// }
+
+// function callingFunction(initialText: string, callback: (text: string) => void)
+// {
+//   callback(initialText);
+// }
+
+// callingFunction("myText", myCallBack);
+function add(arg1: string, arg2: string): string;//option 1
+function add(arg1: number, arg2: number): number;//option 2
+function add(arg1: boolean, arg2: boolean): boolean;//option 3
+//this is not part of the overload list, 
+//so it has only three overloads
+function add(arg1: any, arg2: any): any {
+    return arg1 + arg2;
 }
 
-function callingFunction(initialText: string, callback: (text: string) => void)
-{
-  callback(initialText);
-}
+//Calling 'add' with any other parameter types would cause an error except for the three options
+console.log(add(1, 2));
+console.log(add("Hello", "World"));
+console.log(add(true, false));
 
-callingFunction("myText", myCallBack);
